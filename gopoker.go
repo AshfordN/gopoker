@@ -105,8 +105,8 @@ var UNSUITED_LOOKUP = make(map[uint32]uint32)
 
 func init() {
     
-    FLUSH_LOOKUP = int_csv_to_map("flush_lookup.csv")
-    UNSUITED_LOOKUP = int_csv_to_map("unsuited_lookup.csv")
+    FLUSH_LOOKUP = int_csv_to_map("./flush_lookup.csv")
+    UNSUITED_LOOKUP = int_csv_to_map("./unsuited_lookup.csv")
     
     HANDSIZE_TO_PERMUTATION_MAP = map[int][][5]uint8 {
         5 : FIVE_CHOOSE_FIVE,
