@@ -29,6 +29,8 @@ import (
 	"encoding/csv"
 )
 
+const BestScore = uint32(7462)
+
 var HANDSIZE_TO_PERMUTATION_MAP = make(map[int][][5]uint8, 3)
 
 var FIVE_CHOOSE_FIVE = [][5]uint8 {
@@ -122,7 +124,7 @@ func Evaluate(_cards ...string) uint32 {
 	// get the permutations and the evaluation function
 	possible_hands := hand_permutations(cards, HANDSIZE_TO_PERMUTATION_MAP[len(cards)])
 	
-	best_score := uint32(7462)
+	best_score := BestScore
 	for _, hand := range possible_hands {
 	    handscore := five(hand)
 	    if handscore < best_score {
