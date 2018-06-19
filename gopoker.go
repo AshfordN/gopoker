@@ -23,6 +23,7 @@ package gopoker
 */
 
 import (
+	"os"
 	"strconv"
 	"io"
 	"encoding/csv"
