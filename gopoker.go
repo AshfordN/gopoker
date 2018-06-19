@@ -140,7 +140,7 @@ func int_csv_to_map(filepath string) map[uint32]uint32 {
     // open file, return if failure
     file, err := os.Open(filepath)
     if err != nil {
-        fmt.Println("Error:", err)
+	panic(err)
         return nil
     } 
     defer file.Close()
@@ -153,7 +153,7 @@ func int_csv_to_map(filepath string) map[uint32]uint32 {
         if err == io.EOF {
             break // if we're at the end
         } else if err != nil {
-            fmt.Println("Error:", err)
+	    panic(err)
             return nil
         }
  
