@@ -1,4 +1,4 @@
-package main
+package gopoker
 /*
     Number of Distinct Hand Values:
 
@@ -23,8 +23,6 @@ package main
 */
 
 import (
-	"fmt"
-	"os"
 	"strconv"
 	"io"
 	"encoding/csv"
@@ -112,6 +110,26 @@ func init() {
         6 : SIX_CHOOSE_FIVE,
         7 : SEVEN_CHOOSE_FIVE,
     }
+}
+
+func Evaluate(_cards ...string) uint32 {
+	cards := make([]uint32, len(_cards))
+	for i := 0; i < len(_cards); i++ {
+	    cards[i] = make_card(_cards[i])
+	}
+	
+	// get the permutations and the evaluation function
+	possible_hands := hand_permutations(cards, HANDSIZE_TO_PERMUTATION_MAP[len(cards)])
+	
+	best_score := uint32(7462)
+	for _, hand := range possible_hands {
+	    handscore := five(hand)
+	    if handscore < best_score {
+	        best_score = handscore
+	    }
+	}
+	
+	return best_score
 }
 
 func main() {
