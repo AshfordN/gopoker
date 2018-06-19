@@ -132,26 +132,6 @@ func Evaluate(_cards ...string) uint32 {
 	return best_score
 }
 
-func main() {
-	cards := make([]uint32, len(os.Args) - 1)
-	for i := 1; i < len(os.Args); i++ {
-	    cards[i-1] = make_card(os.Args[i])
-	}
-	
-	// get the permutations and the evaluation function
-	possible_hands := hand_permutations(cards, HANDSIZE_TO_PERMUTATION_MAP[len(cards)])
-	
-	best_score := uint32(7462)
-	for _, hand := range possible_hands {
-	    handscore := five(hand)
-	    if handscore < best_score {
-	        best_score = handscore
-	    }
-	}
-	
-	fmt.Print(best_score)
-}
-
 func int_csv_to_map(filepath string) map[uint32]uint32 {
     
     mapping := make(map[uint32]uint32)
